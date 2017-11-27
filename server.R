@@ -25,6 +25,7 @@ yearThreshold <- as.numeric(format(Sys.Date(),'%Y')) - 2 # Gets theft activity f
 # VERY SLOW PROCESS! Have to optimize or find a way around looping through entire dataset
 # IDEA: Only grab theft data when CLICKING on the point on the map
 # IDEA: Calculate nearby theft data as well to determine best spot to park
+
 getTheftCount <- function(latIn, longIn) {
   returnCount <- bikeTheftData %>% 
     filter(abs(Latitude-(latIn)) < radiusSensitivity & 
@@ -38,9 +39,32 @@ for(i in 1:nrow(bikeRackData)) {
   bikeRackData$THEFTCOUNT[i] <- getTheftCount(bikeRackData$LATITUDE[i], bikeRackData$LONGITUDE[i])
 }
 
+############
+leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
+  setView(lng = -122.3333, lat = 47.6000, zoom = 14) %>%
+  addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
+             lat = as.numeric(bikeRackData$LATITUDE), 
+             weight = 1, 
+             radius = 4, 
+             popup = paste(bikeRackData$LATITUDE, " ",bikeRackData$LONGITUDE), 
+             color = "#FFA500", 
+             fillOpacity = 1.0)
+#############
 
-shinyServer(function(input, output) {
-   
+
+shinyServer(function(input, output, session) {
+  output$CountryMap <- renderLeaflet({
+    leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
+      setView(lng = -122.3333, lat = 47.6000, zoom = 14) %>%
+      addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
+                 lat = as.numeric(bikeRackData$LATITUDE), 
+                 weight = 1, 
+                 radius = 4, 
+                 popup = paste(bikeRackData$LATITUDE, " ",bikeRackData$LONGITUDE), 
+                 color = "#FFA500", 
+                 fillOpacity = 1.0)
+      
+  })
   
   
 })
