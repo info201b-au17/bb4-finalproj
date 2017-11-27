@@ -26,13 +26,18 @@ updateData <- function() {
     bikeRackData$THEFTCOUNT[i] <- getTheftCount(bikeRackData$LATITUDE[i], bikeRackData$LONGITUDE[i])
   }
   
+  # Function for creating RGB color based on value and maximum theft count
   getColor <- function(value, maxTheft) {
     RED <- floor(value/maxTheft * 255)
     GREEN <- 255-RED
     BLUE <- 0
     return(rgb(RED,GREEN,BLUE, maxColorValue=255))
   }
+  
+  # set maximum theft count
   maxTheft <- max(bikeRackData$THEFTCOUNT)
+  
+  # Create dot color column, populate with RGB values from green to red
   bikeRackData$DOT_COLOR <- NA
   for(i in 1:nrow(bikeRackData)) {
     bikeRackData$DOT_COLOR[i] <- getColor(bikeRackData$THEFTCOUNT[i], maxTheft)

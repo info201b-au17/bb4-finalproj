@@ -24,7 +24,7 @@ shinyServer(function(input, output) {
       addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
                  lat = as.numeric(bikeRackData$LATITUDE), 
                  weight = 1, 
-                 radius = 6, 
+                 radius = 10, 
                  popup = paste(bikeRackData$THEFTCOUNT, " ", bikeRackData$LATITUDE, " ", bikeRackData$LONGITUDE), 
                  color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0)
