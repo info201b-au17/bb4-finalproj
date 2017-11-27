@@ -26,5 +26,17 @@ updateData <- function() {
     bikeRackData$THEFTCOUNT[i] <- getTheftCount(bikeRackData$LATITUDE[i], bikeRackData$LONGITUDE[i])
   }
   
+  getColor <- function(value, maxTheft) {
+    RED <- floor(value/maxTheft * 255)
+    GREEN <- 255-RED
+    BLUE <- 0
+    return(rgb(RED,GREEN,BLUE, maxColorValue=255))
+  }
+  maxTheft <- max(bikeRackData$THEFTCOUNT)
+  bikeRackData$DOT_COLOR <- NA
+  for(i in 1:nrow(bikeRackData)) {
+    bikeRackData$DOT_COLOR[i] <- getColor(bikeRackData$THEFTCOUNT[i], maxTheft)
+  }
+  
   write.csv(bikeRackData, file="data/testDatasets/bike_racks.csv")
 }

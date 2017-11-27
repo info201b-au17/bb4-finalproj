@@ -15,7 +15,6 @@ library(ggplot2)
 
 # Get data updating function
 source("loadData.R")
-
 bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 
 shinyServer(function(input, output) {
@@ -25,9 +24,9 @@ shinyServer(function(input, output) {
       addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
                  lat = as.numeric(bikeRackData$LATITUDE), 
                  weight = 1, 
-                 radius = 4, 
+                 radius = 6, 
                  popup = paste(bikeRackData$THEFTCOUNT, " ", bikeRackData$LATITUDE, " ", bikeRackData$LONGITUDE), 
-                 color = "#FFA500", 
+                 color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0)
   })
   
