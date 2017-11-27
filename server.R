@@ -27,7 +27,9 @@ yearThreshold <- as.numeric(format(Sys.Date(),'%Y')) - 2 # Gets theft activity f
 # IDEA: Calculate nearby theft data as well to determine best spot to park
 getTheftCount <- function(latIn, longIn) {
   returnCount <- bikeTheftData %>% 
-    filter(abs(Latitude-(latIn)) < 0.004 & abs(Longitude-longIn) < 0.004 & Year >= yearThreshold) %>% 
+    filter(abs(Latitude-(latIn)) < radiusSensitivity & 
+             abs(Longitude-longIn) < radiusSensitivity & 
+             Year >= yearThreshold) %>% 
     nrow()
   return(returnCount)
 }
