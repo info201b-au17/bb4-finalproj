@@ -52,18 +52,17 @@ leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
 #############
 
 
-shinyServer(function(input, output, session) {
+shinyServer(function(input, output) {
   output$CountryMap <- renderLeaflet({
     leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
-      setView(lng = -122.3333, lat = 47.6000, zoom = 14) %>%
+      setView(lng = -122.3129, lat = 47.6563, zoom = 17) %>%
       addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
                  lat = as.numeric(bikeRackData$LATITUDE), 
                  weight = 1, 
                  radius = 4, 
-                 popup = paste(bikeRackData$LATITUDE, " ",bikeRackData$LONGITUDE), 
+                 popup = paste(bikeRackData$THEFTCOUNT, " ", bikeRackData$LATITUDE, " ", bikeRackData$LONGITUDE), 
                  color = "#FFA500", 
                  fillOpacity = 1.0)
-      
   })
   
   

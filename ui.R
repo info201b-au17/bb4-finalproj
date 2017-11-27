@@ -1,15 +1,18 @@
 library(shiny)
 library(shinydashboard)
+library(leaflet)
+library(graphics)
+library(googleVis)
 
 shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      leafletOutput("CountryMap", width = "100%", height = "100%")
+      
     ),
     
     mainPanel(
-    
+      leafletOutput("CountryMap", width = "100%", height = "500px")
     )
   )
 ))
