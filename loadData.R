@@ -1,7 +1,7 @@
 # This file loads in data and writes the data to a local csv file so there's only one calculation
 
 updateData <- function() {
-  # Load in bike data
+  # Load in bike data (Can be replaced with API)
   bikeTheftData <- read.csv("data/testDatasets/stolen_bikes.csv") %>% select(Latitude, Longitude, Year)
   bikeRackData <- read.csv("data/testDatasets/bike_racks.csv") %>% select(LATITUDE, LONGITUDE, CONDITION)
   
@@ -37,7 +37,7 @@ updateData <- function() {
   # set maximum theft count
   maxTheft <- max(bikeRackData$THEFTCOUNT)
   
-  # A function to return strings
+  # A function to return qualitative safety ratings
   checkSafety <- function(value) {
     if(value < 0.05*maxTheft) {
       return("Very safe")
@@ -60,6 +60,6 @@ updateData <- function() {
     bikeRackData$SAFETY_RATING[i] <- checkSafety(bikeRackData$THEFTCOUNT[i])
   }
 
-  
+  # Rewrite imported CSV file  
   write.csv(bikeRackData, file="data/testDatasets/bike_racks.csv")
 }

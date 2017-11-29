@@ -17,14 +17,21 @@ library(ggplot2)
 source("loadData.R")
 bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 
+# set constants
+startLongitude <- -122.3129
+startLatitude <- 47.6563
+startZoom <- 17
+weightOfCircles <- 1
+radiusOfCircles <- 10
+
 shinyServer(function(input, output) {
   output$CountryMap <- renderLeaflet({
     leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
-      setView(lng = -122.3129, lat = 47.6563, zoom = 17) %>%
+      setView(lng = startLongitude, lat = startLatitude, zoom = startZoom) %>%
       addCircles(lng = as.numeric(bikeRackData$LONGITUDE), 
                  lat = as.numeric(bikeRackData$LATITUDE), 
-                 weight = 1, 
-                 radius = 10, 
+                 weight = weightOfCircles, 
+                 radius = radiusOfCircles, 
                  popup = paste0("<strong>Danger Level: ",bikeRackData$SAFETY_RATING,"</strong><br />
                                 <progress value='",
                                 bikeRackData$THEFTCOUNT,
