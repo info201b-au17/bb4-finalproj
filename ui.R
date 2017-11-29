@@ -10,8 +10,10 @@ shinyUI(fluidPage(
   inlineCSS("#loading_page { 
                   margin-left:50 wv; 
                   text-align:center; 
-                  margin-top: 50vh; 
-                  padding:0px}
+                  margin-top: 40vh; 
+                  padding:0px;
+                  background: none;
+            }
             #main_content { 
                   padding:0px;
             }
@@ -20,7 +22,7 @@ shinyUI(fluidPage(
             }"),
   div(
     id = "loading_page",
-    h1("Loading data, please wait...")
+    h1("Loading data, please allow 10 seconds for startup...")
   ),
   hidden(
     div(
