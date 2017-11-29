@@ -7,8 +7,6 @@ library(graphics)
 library(googleVis)
 library(shinyjs)
 
-library(ggplot2)
-
 # Get data from API
 # source(data/apiLinks.R)
 # bikeTheftData <- bikeTheftDataset()

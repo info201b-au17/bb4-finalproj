@@ -42,7 +42,7 @@ shinyUI(fluidPage(
     ),
     div(
       id = "titlePanel",
-      h1("SafeCycle"),
+      h1("Seattle SafeCycle"),
       h5("Select a bike rack near you to see how safe it is.")
     )
   )
