@@ -12,11 +12,12 @@ shinyUI(fluidPage(
   
   # Adds CSS to specified elements
   inlineCSS("#loading_page { 
-                  margin-left:50 wv; 
+                  width: 100vw;
                   text-align:center; 
                   margin-top: 40vh; 
                   padding:0px;
                   background: none;
+                  position: absolute;
             }
             #main_content { 
                   padding:0px;
