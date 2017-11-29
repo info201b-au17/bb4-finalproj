@@ -37,11 +37,29 @@ updateData <- function() {
   # set maximum theft count
   maxTheft <- max(bikeRackData$THEFTCOUNT)
   
+  # A function to return strings
+  checkSafety <- function(value) {
+    if(value < 0.05*maxTheft) {
+      return("Very safe")
+    } else if(value < 0.25*maxTheft) {
+      return("Safe")
+    } else if(value < 0.5*maxTheft) {
+      return("Pretty safe")  
+    } else if(value < 0.75*maxTheft) {
+      return("Pretty unsafe")
+    } else {
+      return("Unsafe!")
+    }
+  }
+  
   # Create dot color column, populate with RGB values from green to red
   bikeRackData$DOT_COLOR <- NA
+  bikeRackData$SAFETY_RATING <- NA
   for(i in 1:nrow(bikeRackData)) {
     bikeRackData$DOT_COLOR[i] <- getColor(bikeRackData$THEFTCOUNT[i], maxTheft)
+    bikeRackData$SAFETY_RATING[i] <- checkSafety(bikeRackData$THEFTCOUNT[i])
   }
+
   
   write.csv(bikeRackData, file="data/testDatasets/bike_racks.csv")
 }

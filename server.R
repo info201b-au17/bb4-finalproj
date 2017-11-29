@@ -25,7 +25,12 @@ shinyServer(function(input, output) {
                  lat = as.numeric(bikeRackData$LATITUDE), 
                  weight = 1, 
                  radius = 10, 
-                 popup = paste(bikeRackData$THEFTCOUNT, " ", bikeRackData$LATITUDE, " ", bikeRackData$LONGITUDE), 
+                 popup = paste0("<strong>Danger Level: ",bikeRackData$SAFETY_RATING,"</strong><br />
+                                <progress value='",
+                                bikeRackData$THEFTCOUNT,
+                                "' max='",
+                                max(bikeRackData$THEFTCOUNT),
+                                "'></progress>"), 
                  color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0)
   })
