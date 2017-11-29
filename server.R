@@ -14,6 +14,7 @@ library(shinyjs)
 
 # Get data updating function
 source("loadData.R")
+bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 loadInData <- function() {
   bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 }
