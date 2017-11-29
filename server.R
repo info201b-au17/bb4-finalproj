@@ -30,6 +30,7 @@ load_data <- function() {
   show("main_content")
   Sys.sleep(4)
   hide("loading_page")
+  show("titlePanel")
 }
 
 
@@ -42,11 +43,19 @@ shinyServer(function(input, output, session) {
                  weight = weightOfCircles, 
                  radius = radiusOfCircles, 
                  popup = paste0("<strong>Danger Level: ",bikeRackData$SAFETY_RATING,"</strong><br />
-                                <progress value='",
+                                <progress style='width: 100%' value='",
                                 bikeRackData$THEFTCOUNT,
                                 "' max='",
                                 max(bikeRackData$THEFTCOUNT),
-                                "'></progress>"), 
+                                "'></progress><br />
+                                <p>In the past two years, a total of ", 
+                                bikeRackData$THEFTCOUNT, " bicycle thefts have been reported within about 
+                                two blocks from this bike rack.</p>
+                                <p><a href='https://www.google.com/maps?q=&layer=c&cbll=",bikeRackData$LATITUDE,",",
+                                bikeRackData$LONGITUDE,"'>Google Street View</a><br />
+                                Latitude: ",bikeRackData$LATITUDE,
+                                "<br />Longitude: ",bikeRackData$LONGITUDE,"</p>
+                                <p>Reported condition of bike rack: ",bikeRackData$CONDITION,"</p>"), 
                  color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0)
   })

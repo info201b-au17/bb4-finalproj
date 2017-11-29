@@ -16,6 +16,17 @@ shinyUI(fluidPage(
             }
             #main_content { 
                   padding:0px;
+                  position: absolute;
+            }
+            #titlePanel {
+                  background-color: white;
+                  border: 2px solid;
+                  border-radius: 5px;
+                  position: absolute;
+                  margin-left: 6vw;
+                  margin-top: 1.5vh;
+                  padding-left: 10px;
+                  padding-right: 10px;
             }
             .container-fluid {
                   padding:0px;
@@ -28,6 +39,11 @@ shinyUI(fluidPage(
     div(
       id = "main_content",
       leafletOutput("CountryMap", width = "100vw", height = "100vh")
+    ),
+    div(
+      id = "titlePanel",
+      h1("SafeCycle"),
+      h5("Select a bike rack near you to see how safe it is.")
     )
   )
    

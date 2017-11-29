@@ -41,7 +41,7 @@ updateData <- function() {
   checkSafety <- function(value) {
     if(value < 0.05*maxTheft) {
       return("Very safe")
-    } else if(value < 0.25*maxTheft) {
+    } else if(value < 0.15*maxTheft) {
       return("Safe")
     } else if(value < 0.5*maxTheft) {
       return("Pretty safe")  
