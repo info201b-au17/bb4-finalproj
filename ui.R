@@ -5,8 +5,12 @@ library(graphics)
 library(googleVis)
 library(shinyjs)
 
+# UI
 shinyUI(fluidPage(
+  # Starts up shinyjs
   useShinyjs(),
+  
+  # Adds CSS to specified elements
   inlineCSS("#loading_page { 
                   margin-left:50 wv; 
                   text-align:center; 
@@ -32,15 +36,23 @@ shinyUI(fluidPage(
             .container-fluid {
                   padding:0px;
             }"),
+  
+  # Creates a div that displays the string inside the h1 tag below
   div(
     id = "loading_page",
     h1("Loading data, please allow 10 seconds for startup...")
   ),
+  
+  # Initially hidden tags
   hidden(
+    
+    # Creates a div that displays the map inside it
     div(
       id = "main_content",
       leafletOutput("CountryMap", width = "100vw", height = "100vh")
     ),
+    
+    # Creates a div that makes the title, subtext, and update button appear.
     div(
       id = "titlePanel",
       h1("Seattle SafeCycle"),

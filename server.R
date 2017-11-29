@@ -20,7 +20,7 @@ loadInData <- function() {
 }
 loadInData()
 
-# set constants
+# set up constants to be used later
 startLongitude <- -122.3129
 startLatitude <- 47.6563
 startZoom <- 17
@@ -28,6 +28,7 @@ weightOfCircles <- 1
 radiusOfCircles <- 10
 
 # Loading page message function code, sourced from Dean Attali on stack overflow
+# Uses shinyjs library for showing and hiding certain elements
 load_data <- function() {
   show("main_content")
   Sys.sleep(4)
@@ -35,8 +36,9 @@ load_data <- function() {
   show("titlePanel")
 }
 
-
+# Server scripts
 shinyServer(function(input, output, session) {
+  # Create the leaflet map, add all bike rack points, add pop up window text.
   output$CountryMap <- renderLeaflet({
     leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
       setView(lng = startLongitude, lat = startLatitude, zoom = startZoom) %>%
@@ -57,11 +59,12 @@ shinyServer(function(input, output, session) {
                                 bikeRackData$LONGITUDE,"'>Google Street View</a><br />
                                 Latitude: ",bikeRackData$LATITUDE,
                                 "<br />Longitude: ",bikeRackData$LONGITUDE,"</p>
-                                <p>Reported condition of bike rack: ",bikeRackData$CONDITION,"</p>"), 
+                                <p>Reported condition of bike rack: ", bikeRackData$CONDITION, "</p>"), 
                  color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0) 
   })
   
+  # Button to manually update data and then display the message once it is updated.
   observeEvent(input$updateDataButton, {
     output$consoleMessage <- renderText({
       "Updating data. Please wait..."
@@ -73,6 +76,7 @@ shinyServer(function(input, output, session) {
     })
   })
   
+  # Loading data message
   load_data()
   
   
