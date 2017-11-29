@@ -5,6 +5,7 @@ library(leaflet)
 library(shinydashboard)
 library(graphics)
 library(googleVis)
+library(shinyjs)
 
 library(ggplot2)
 
@@ -24,7 +25,16 @@ startZoom <- 17
 weightOfCircles <- 1
 radiusOfCircles <- 10
 
-shinyServer(function(input, output) {
+# Loading page message function code, sourced from Dean Attali on stack overflow
+load_data <- function() {
+  Sys.sleep(5)
+  hide("loading_page")
+  show("main_content")
+}
+
+
+shinyServer(function(input, output, session) {
+  load_data()
   output$CountryMap <- renderLeaflet({
     leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
       setView(lng = startLongitude, lat = startLatitude, zoom = startZoom) %>%
