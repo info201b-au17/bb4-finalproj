@@ -27,6 +27,7 @@ shinyUI(fluidPage(
                   margin-top: 1.5vh;
                   padding-left: 10px;
                   padding-right: 10px;
+                  padding-bottom: 5px;
             }
             .container-fluid {
                   padding:0px;
@@ -43,7 +44,9 @@ shinyUI(fluidPage(
     div(
       id = "titlePanel",
       h1("Seattle SafeCycle"),
-      h5("Select a bike rack near you to see how safe it is.")
+      h5("Select a bike rack near you to see how safe it is."),
+      actionButton("updateDataButton", "Update Data"),
+      textOutput("consoleMessage")
     )
   )
    

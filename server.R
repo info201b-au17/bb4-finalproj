@@ -14,7 +14,10 @@ library(shinyjs)
 
 # Get data updating function
 source("loadData.R")
-bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
+loadInData <- function() {
+  bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
+}
+loadInData()
 
 # set constants
 startLongitude <- -122.3129
@@ -55,7 +58,18 @@ shinyServer(function(input, output, session) {
                                 "<br />Longitude: ",bikeRackData$LONGITUDE,"</p>
                                 <p>Reported condition of bike rack: ",bikeRackData$CONDITION,"</p>"), 
                  color = paste(bikeRackData$DOT_COLOR), 
-                 fillOpacity = 1.0)
+                 fillOpacity = 1.0) 
+  })
+  
+  observeEvent(input$updateDataButton, {
+    output$consoleMessage <- renderText({
+      "Updating data. Please wait..."
+    })
+    updateData()
+    loadInData()
+    output$consoleMessage <- renderText({
+      "Data updated"
+    })
   })
   
   load_data()
