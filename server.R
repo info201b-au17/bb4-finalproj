@@ -18,7 +18,6 @@ bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 loadInData <- function() {
   bikeRackData <- read.csv("data/testDatasets/bike_racks.csv")
 }
-loadInData()
 
 # set up constants to be used later
 startLongitude <- -122.3129
@@ -29,15 +28,10 @@ radiusOfCircles <- 10
 
 # Loading page message function code, sourced from Dean Attali on stack overflow
 # Uses shinyjs library for showing and hiding certain elements
-load_data <- function() {
+# Hides loading message after everything is shown already
+load_data <- function(input, output) {
   show("main_content")
-  Sys.sleep(4)
-  hide("loading_page")
-  show("titlePanel")
-}
-
-# Server scripts
-shinyServer(function(input, output, session) {
+  loadInData()
   # Create the leaflet map, add all bike rack points, add pop up window text.
   output$CountryMap <- renderLeaflet({
     leaflet() %>% addTiles() %>% addProviderTiles("Esri.WorldStreetMap") %>%
@@ -56,13 +50,23 @@ shinyServer(function(input, output, session) {
                                 bikeRackData$THEFTCOUNT, " bicycle thefts have been reported within about 
                                 two blocks from this bike rack.</p>
                                 <p><a href='https://www.google.com/maps?q=&layer=c&cbll=",bikeRackData$LATITUDE,",",
-                                bikeRackData$LONGITUDE,"'>Google Street View</a><br />
+                                bikeRackData$LONGITUDE,"' target='_blank'>Google Street View</a><br />
                                 Latitude: ",bikeRackData$LATITUDE,
                                 "<br />Longitude: ",bikeRackData$LONGITUDE,"</p>
                                 <p>Reported condition of bike rack: ", bikeRackData$CONDITION, "</p>"), 
                  color = paste(bikeRackData$DOT_COLOR), 
                  fillOpacity = 1.0) 
   })
+  hide("loading_page")
+  show("titlePanel")
+}
+
+# Server scripts
+shinyServer(function(input, output, session) {
+  
+  
+  # Loading data message
+  load_data(input, output)
   
   # Button to manually update data and then display the message once it is updated.
   observeEvent(input$updateDataButton, {
@@ -72,12 +76,14 @@ shinyServer(function(input, output, session) {
     updateData()
     loadInData()
     output$consoleMessage <- renderText({
+      "Data updated, refreshing page"
+    })
+    Sys.sleep(2)
+    load_data(input, output)
+    output$consoleMessage <- renderText({
       "Data updated"
     })
   })
-  
-  # Loading data message
-  load_data()
   
   
 })

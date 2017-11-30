@@ -5,8 +5,8 @@ account: wkwok16
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 241420
-bundleId: 1104775
+bundleId: 1105380
 url: https://wkwok16.shinyapps.io/bb4-finalproj/
-when: 1511981711.55128
+when: 1512004197.15271
 asMultiple: FALSE
 asStatic: FALSE

@@ -58,7 +58,7 @@ shinyUI(fluidPage(
       id = "titlePanel",
       h1("Seattle SafeCycle"),
       h5("Select a bike rack near you to see how safe it is."),
-      actionButton("updateDataButton", "Update Data"),
+      actionButton("updateDataButton", "Update/Refresh Data (allow time to update)"),
       textOutput("consoleMessage")
     )
   )

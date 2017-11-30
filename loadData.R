@@ -6,7 +6,7 @@ updateData <- function() {
   bikeRackData <- read.csv("data/testDatasets/bike_racks.csv") %>% select(LATITUDE, LONGITUDE, CONDITION)
   
   # Constants
-  radiusSensitivity <- 0.004 # Radius of bike thefts that will be considered for a bike rack, in units of lat/long
+  radiusSensitivity <- 0.003 # Radius of bike thefts that will be considered for a bike rack, in units of lat/long
   yearThreshold <- as.numeric(format(Sys.Date(),'%Y')) - 2 # Gets theft activity from the past two years
   
   # Add count of thefts near bike rack
