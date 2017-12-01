@@ -61,17 +61,17 @@ This data implies that your bike has a more likely chance of being stolen in the
 * We read in raw bike theft data and bike rack data as CSV files and then filtered certain columns. From there, we calculated amounts of thefts reported from the past two years in a certain radius of a selected bike rack (0.003° Latitude/Longitude). This is calculated for **every single** bike rack, so it takes around 10 seconds of computation time
 * We calculated what color on a scale of <strong style="color:#FF0000">red</strong> to <strong style="color:#00FF00">green</strong> what the color of each point should be
 * Based on theft count compared to theft of the highest crime rate bike rack, we assigned a safety rating to each bike rack as follows:
-  * count < 5% of highest theft count: "Very Safe"
-  * 5% ≤ count < 15% of highest theft count: "Safe"
-  * 15% ≤ count < 50% of highest theft count: "Pretty safe"
-  * 50% ≤ count < 75% of highest theft count: "Pretty unsafe"
-  * 75% of highest theft count ≤ count: "Unsafe!"
+  * count < 5% of highest theft count: **"Very Safe"**
+  * 5% ≤ count < 15% of highest theft count: **"Safe"**
+  * 15% ≤ count < 50% of highest theft count: **"Pretty safe"**
+  * 50% ≤ count < 75% of highest theft count: **"Pretty unsafe"**
+  * 75% of highest theft count ≤ count: **"Unsafe!"**
 * We then overwrote the bike rack data file with this new dataset
 * Future plans: Calculate suggestions for a safer nearby bike rack
 
 ### Server side processing
 
-* Loads data from a CSV file into a leaflet map
+* Loads data from a CSV file into a leaflet map using leaflet library listed below
   * Leaflet map has a bunch of starting parameters based on data from the dataset
 * Creates functionality for updating data
 
