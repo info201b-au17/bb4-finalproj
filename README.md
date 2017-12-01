@@ -71,6 +71,8 @@ This data implies that your bike has a more likely chance of being stolen in the
 
 ### Server side processing
 
+![table](readmePictures/table.png)
+
 * Loads data from a CSV file into a leaflet map using leaflet library listed below
   * Leaflet map has a bunch of starting parameters based on data from the dataset
 * Creates functionality for updating data
