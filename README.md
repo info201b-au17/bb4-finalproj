@@ -1,3 +1,7 @@
+# [Link to our project!](wkwok16.shinyapps.io/bb4-finalproj/)
+
+----
+
 # Project Description
 
 Unfortunately, the world around us isn't entirely moral, so we have to be wary about where we park out bikes. No matter what strong locks we use, our bikes have a good chance of getting itself or its parts stolen. Our solution: A tool that allows **bike riders** to find the best parking space nearby for their bike.
@@ -27,9 +31,64 @@ While this software aims to bring safety and security to the people, we must not
 
 # Analysis
 
+![analysis](/readmePictures/analysis.png)
+
+### Overview
+
+From a quick glance, it can be seen that near downtown Seattle (around the Westlake Link Station) is where bike thefts are most common. The highest amount of bike thefts reported within the last two years was in this area, 179!
+
+Meanwhile, the least amount of thefts was 0 in areas far outside of downtown Seattle.
+
+This data implies that your bike has a more likely chance of being stolen in the areas with a stronger shade of red. However, there are a few faults to this method of calculation.
+
+### Faults
+
+1. There is a higher population in downtown Seattle compared to an area like the University of Washington, so naturally there will be a higher population of bikers, and as a result a higher amount of bike thefts.
+
+1. College students may be more likely to have cheap used bikes bought from a Goodwill. If their bike gets stolen, it may not be a huge deal to them, if they bought it for cheap. Therefore the area around University of Washington may be affected by this.
+
+1. The radius of calculation may be too large, and not representative of specific bike racks. Perhaps there may be a bike rack where there were no thefts but at a nearby bike rack the theft count is very high.
+
+
+
 # Technical Description
 
-# Major problems we encountered or Persistent problems
+### Data wrangling
+
+* Most of the data wrangling was done in `loadData.R`
+* We read in raw bike theft data and bike rack data as CSV files and then filtered certain columns. From there, we calculated amounts of thefts reported from the past two years in a certain radius of a selected bike rack (0.003° Latitude/Longitude). This is calculated for **every single** bike rack, so it takes around 10 seconds of computation time
+* We calculated what color on a scale of <strong style="color:#FF0000">red</strong> to <strong style="color:#00FF00">green</strong> what the color of each point should be
+* Based on theft count compared to theft of the highest crime rate bike rack, we assigned a safety rating to each bike rack as follows:
+  * count < 5% of highest theft count: "Very Safe"
+  * 5% ≤ count < 15% of highest theft count: "Safe"
+  * 15% ≤ count < 50% of highest theft count: "Pretty safe"
+  * 50% ≤ count < 75% of highest theft count: "Pretty unsafe"
+  * 75% of highest theft count ≤ count: "Unsafe!"
+* We then overwrote the bike rack data file with this new dataset
+* Future plans: Calculate suggestions for a safer nearby bike rack
+
+### Server side processing
+
+* Loads data from a CSV file into a leaflet map
+  * Leaflet map has a bunch of starting parameters based on data from the dataset
+* Creates functionality for updating data
+
+### Client side UI
+
+* Uses shinyjs to add inline CSS to generated output
+* Generates UI
+
+### Libraries utilized
+
+* [shiny](https://shiny.rstudio.com/)
+* [dplyr](http://dplyr.tidyverse.org/)
+* [leaflet for R](https://rstudio.github.io/leaflet/)
+* [shinydashboard](https://rstudio.github.io/shinydashboard/)
+* [graphics](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/00Index.html)
+* [googleVis](https://cran.r-project.org/web/packages/googleVis/index.html)
+* [shinyjs](https://deanattali.com/shinyjs/)
+
+# Major problems we encountered, persistent problems, and future plans
 
 ### Problem 1: Rendering the leafletOutput in ShinyUI
 
@@ -51,10 +110,3 @@ While this software aims to bring safety and security to the people, we must not
 
 * **Description**: From the start, we used a downloaded CSV file from those two datasets listed earlier. We wanted to use CSV files as a start for testing, and eventually integrate the applet with the API provided by the SDoT.
 * **Persistent problem**: When integrating, while the data was fetched properly, it did not run correctly in the code. This is because httr::GET seems to be asynchronous in our implementation with the Shiny server, while we want it to **act** as a synchronous function. What this means is that the program crashes because it goes on to the next step without grabbing the data first. Future plans are to look into GET Promises in R.
-
-## Problem 5: 
-
-
-
-
-# Future plans
