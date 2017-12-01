@@ -1,4 +1,4 @@
-# [Link to our project!](wkwok16.shinyapps.io/bb4-finalproj/)
+# [Link to our project!](https://wkwok16.shinyapps.io/bb4-finalproj/)
 
 # Project Description
 
