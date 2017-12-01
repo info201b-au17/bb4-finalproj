@@ -20,9 +20,9 @@ loadInData <- function() {
 }
 
 # set up constants to be used later
-startLongitude <- -122.3129
-startLatitude <- 47.6563
-startZoom <- 17
+startLongitude <- -122.329
+startLatitude <- 47.6036
+startZoom <- 15
 weightOfCircles <- 1
 radiusOfCircles <- 10
 
