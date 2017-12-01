@@ -1,8 +1,12 @@
-# [Link to our project!](https://wkwok16.shinyapps.io/bb4-finalproj/)
+# [Link to our project!](https://wkwok16.shinyapps.io/bb4-finalproj/) - Seattle SafeCycle
 
 # Project Description
 
-Unfortunately, the world around us isn't entirely moral, so we have to be wary about where we park out bikes. No matter what strong locks we use, our bikes have a good chance of getting itself or its parts stolen. Our solution: A tool that allows **bike riders** to find the best parking space nearby for their bike.
+Unfortunately, the world around us isn't entirely moral, so we have to be wary about where we park out bikes. No matter what strong locks we use, our bikes have a good chance of getting itself or its parts stolen.
+
+**Question**: How can we determine which bike rack is safe from thefts or not?
+
+**Our solution:** A tool that allows **bike riders** to find the best parking space nearby for their bike.
 
 For our project, we worked with two datasets provided by the Seattle Department of Transportation:
 
