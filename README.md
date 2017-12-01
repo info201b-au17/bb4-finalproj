@@ -1,29 +1,31 @@
 # Project Description
 
-For our project, we will be working with two datasets that we found from Seattle's public datasets. We will be using data about the [bike racks](https://data.seattle.gov/Transportation/City-of-Seattle-Bicycle-Racks/vncn-umqp) around the city of Seattle, as well as [bike theft reports](https://data.seattle.gov/widgets/8rw6-mmz7). They are both provided by the Seattle Department of Transportation. 
+Unfortunately, the world around us isn't entirely moral, so we have to be wary about where we park out bikes. No matter what strong locks we use, our bikes have a good chance of getting itself or its parts stolen. Our solution: A tool that allows **bike riders** to find the best parking space nearby for their bike.
 
-Unfortunately the world around us isn't entirely moral, so we have to be wary about where we park our bikes. No matter what strong locks we use, our bikes have a good chance of getting itself or its parts stolen. Our primary target audience for this app will be bike riders looking to park their bike somewhere safer. 
+For our project, we worked with two datasets provided by the Seattle Department of Transportation:
 
-The app will be able to tell the audience a few things:
+* A list of all [bike racks](https://data.seattle.gov/Transportation/City-of-Seattle-Bicycle-Racks/vncn-umqp) in or around Seattle
+* A list of all reported [bike thefts](https://data.seattle.gov/widgets/8rw6-mmz7) in or around Seattle.
 
-1. Where nearest bike racks may be
+### What we did
 
-1. A heatmap of past bike thefts surrounding a specified area
+![app landing page](/readmePictures/landingPage.png)
 
-1. A tip on finding the nearest safer bike rack if a bike rack is flagged as unsafe.
+We created a map based on the last two years of bike theft data that shows which bike racks were Unsafe to Safe on a gradient.
 
-While this software aims to bring safety and security to the people, we mustn't ignore the problem we face with those who may misuse it. A potential danger is that individuals will see which areas are marked as "safe" and start looting bikes from that area. A major focus heading forward is finding a way around this problem that stems from bad human nature.
+![clicking on a point](/readmePictures/clickOnPoint.png)
 
-# Technical Description
+A user can click on any point and look at data about that bike rack. They can see a quick statistic about its danger level, and they can click on a link to redirect them to a Google Maps view in a new tab.
 
-The format of our final product will most likely be a Shiny app that uses the [Leaflet](https://rstudio.github.io/leaflet/shiny.html) library, similar to this [population map of Ukraine map](https://olesiakoshyk.shinyapps.io/ukrainemap/)
+This implementation is open-source and adaptable for places other than Seattle as long as they have some sort of dataset available for bike racks and bike thefts.
 
-We will be reading in the data from two .csv files, but the code will be adaptable for a future live API.
+This tool is in a **functional beta state** that can be improved on in the future. The possibilities for new features are <strong style="color:#7033a1">boundless</strong>.
 
-For wrangling the data, we will need to be filtering the longitude and latitudes of the bike racks, and taking in all the bike thefts in a reasonable radius, and give each bike rack a "score", which we will depict by color (green to red, good to bad).
+# Ethical Concerns
 
-We will be likely using a new library called Leaflet, as mentioned earlier. 
+While this software aims to bring safety and security to the people, we must not ignore the problem we face with those who may misuse it. A potential danger is that certain individuals will see which areas are marked as "safe" and start looting bikes from that area. A major focus we have looking forward is finding a way around this problem that stems from bad human nature.
 
-We will be solving the questions listed above in the "Product Description" area.
+# Analysis
 
-We anticipate that we may find thefts not associated with bike racks, and we'll have to ensure it plays no part in the calculation for weight.
+
+# Future plans

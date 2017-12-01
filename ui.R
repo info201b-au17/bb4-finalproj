@@ -11,28 +11,31 @@ shinyUI(fluidPage(
   useShinyjs(),
   
   # Adds CSS to specified elements
-  inlineCSS("#loading_page, #main_content, #titlepanel {
-                  position:absolute;
+  inlineCSS("#loading_page { 
+                width: 100vw;
+                text-align:center; 
+                margin-top: 40vh; 
+                padding:0px;
+                background: none;
+                position: absolute;
             }
-            #loading_page, #main_content, #container-fluid {
-                  padding: 0px;
-            }
-            #loading_page { 
-                  width: 100vw;
-                  text-align:center; 
-                  margin-top: 40vh; 
-                  background: none;
+            #main_content { 
+                padding:0px;
+                position: absolute;
             }
             #titlePanel {
-                  background-color: white;
-                  border: 2px solid;
-                  border-radius: 5px;
-                  position: absolute;
-                  margin-left: 6vw;
-                  margin-top: 1.5vh;
-                  padding-left: 10px;
-                  padding-right: 10px;
-                  padding-bottom: 5px;
+                background-color: white;
+                border: 2px solid;
+                border-radius: 5px;
+                position: absolute;
+                margin-left: 6vw;
+                margin-top: 1.5vh;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 5px;
+            }
+            .container-fluid {
+                padding:0px;
             }"),
   
   # Creates a div that displays the string inside the h1 tag below
