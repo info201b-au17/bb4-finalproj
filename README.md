@@ -17,7 +17,7 @@ For our project, we worked with two datasets provided by the Seattle Department 
 
 ![app landing page](/readmePictures/landingPage.png)
 
-We created a map based on the last two years of bike theft data that shows which bike racks were Unsafe to Safe on a gradient.
+We created a map based on the last two years of bike theft data that shows which bike racks were Unsafe to Safe using a visual color gradient.
 
 ![clicking on a point](/readmePictures/clickOnPoint.png)
 
@@ -47,7 +47,7 @@ This data implies that your bike has a more likely chance of being stolen in the
 
 1. There is a higher population in downtown Seattle compared to an area like the University of Washington, so naturally there will be a higher population of bikers, and as a result a higher amount of bike thefts.
 
-1. College students may be more likely to have cheap used bikes bought from a Goodwill. If their bike gets stolen, it may not be a huge deal to them, if they bought it for cheap. Therefore the area around University of Washington may be affected by this.
+1. College students may be more likely to have cheap used bikes bought from a Goodwill, and therefore won't bother with reporting a theft. If their bike gets stolen, it may not be a huge deal to them, if they bought it for cheap. Therefore the area around University of Washington may be affected by this.
 
 1. The radius of calculation may be too large, and not representative of specific bike racks. Perhaps there may be a bike rack where there were no thefts but at a nearby bike rack the theft count is very high.
 
