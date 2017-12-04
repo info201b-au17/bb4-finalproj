@@ -53,7 +53,7 @@ This data implies that your bike has a more likely chance of being stolen in the
 
 ### Further
 
-Taking fault 3 into consideration, we tried testing a smaller latitude/longitude radius (0.0008). Additionally, we set the radius of the circles bigger, so we could see concentrated clusters of color easier, as making the radius smaller meant a lot more were light green rather than dark.
+Taking fault 3 into consideration, we tried testing a smaller latitude/longitude radius (to 0.0008° Latitude/Longitude from 0.003° Latitude/Longitude). Additionally, we set the radius of the circles bigger, so we could see concentrated clusters of color easier, as making the radius smaller meant a lot more were light green rather than dark.
 
 ![analysis 2](/readmePictures/analysis2.png)
 
