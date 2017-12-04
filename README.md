@@ -51,6 +51,15 @@ This data implies that your bike has a more likely chance of being stolen in the
 
 1. The radius of calculation may be too large, and not representative of specific bike racks. Perhaps there may be a bike rack where there were no thefts but at a nearby bike rack the theft count is very high.
 
+### Further
+
+Taking fault 3 into consideration, we tried testing a smaller latitude/longitude radius (0.0008). Additionally, we set the radius of the circles bigger, so we could see concentrated clusters of color easier, as making the radius smaller meant a lot more were light green rather than dark.
+
+![analysis 2](/readmePictures/analysis2.png)
+
+As you can see from the circled patches, there are now more concentrated areas of thefts, which gives riders a better representation of which bike racks are unsafe, compared to the last radius, which just told us that a general large area was unsafe.
+
+**We believe this to be a better representation of which bike racks are unsafe, and have therefore pushed this radius to the latest version.**
 
 
 # Technical Description

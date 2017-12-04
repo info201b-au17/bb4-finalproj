@@ -24,7 +24,7 @@ startLongitude <- -122.329
 startLatitude <- 47.6036
 startZoom <- 15
 weightOfCircles <- 1
-radiusOfCircles <- 10
+radiusOfCircles <- 30
 
 # Loading page message function code, sourced from Dean Attali on stack overflow
 # Uses shinyjs library for showing and hiding certain elements
