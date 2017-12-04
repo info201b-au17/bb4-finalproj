@@ -97,8 +97,7 @@ This data implies that your bike has a more likely chance of being stolen in the
 ### Problem 1: Rendering the leafletOutput in ShinyUI
 
 * **Description**: It was not rendering correctly with this code: `leafletOutput("CountryMap", width = "100%", height = "100%")`
-* **How we solved it**: We used different syntax: `leafletOutput("CountryMap", width = "100vw", height = "100vh")`
-* **Why it works**: Using `%` for **width** works, but for some reason not **height**. This caused a problem that just made it not run correctly. **Height** can be in pixels or view height, we found.
+* **Solution**: We used different syntax: `leafletOutput("CountryMap", width = "100vw", height = "100vh")`. Using `%` for **width** works, but for some reason not **height**. This caused a problem that just made it not run correctly. **Height** can be in pixels or view height, we found.
 
 ### Problem 2: Loading of leaflet takes a very long time
 
@@ -114,3 +113,8 @@ This data implies that your bike has a more likely chance of being stolen in the
 
 * **Description**: From the start, we used a downloaded CSV file from those two datasets listed earlier. We wanted to use CSV files as a start for testing, and eventually integrate the applet with the API provided by the SDoT.
 * **Persistent problem**: When integrating, while the data was fetched properly, it did not run correctly in the code. This is because `httr::GET` seems to be asynchronous in our implementation with the Shiny server, while we want it to **act** as a synchronous function. What this means is that the program crashes because it goes on to the next step without grabbing the data first. Future plans are to look into GET Promises in R.
+
+### Problem 5: Rendering leafletOutput with `100vw` was not working on different computers
+
+* **Description**: Similar to problem \#1, we had an issue with the applet crashing when we started it up.
+* **Solution**: Reinstalling the `htmltools` package seemed to work. Perhaps it was out of date.
